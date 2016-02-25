@@ -10,6 +10,10 @@ b) adjust the parameters of a particular bot
 
 ###Use Case:
 Provide multiple interactions with users in the context of working inside the Slack app, including:
+
 1. Super-Kai, the pre-customer Onboarding Bot
 2. Mama-Kai, the company Culture Bot
-3. 
+3. Aziz_bot: the Watson API Conversation Tone Analyzer Bot
+4. Teriyaki-boy:  the company Lunch Bot
+5. Billy : the Dev Team's Daily Development Repor bot
+
