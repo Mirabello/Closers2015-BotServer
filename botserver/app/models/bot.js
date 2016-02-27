@@ -1,13 +1,14 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var BotSchema = new Schema({
     "active": Boolean,
     "service": String,
     "contollerType": String,
-    "botType": String,
+    "type": String,
     "teamID": String,
-    "slackToken" : String,
-    "options": {}
+    "token" : String,
+    "properties": {}
 });
 
 module.exports = mongoose.model("Bot", BotSchema);
