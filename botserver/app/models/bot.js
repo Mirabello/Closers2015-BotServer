@@ -11,4 +11,11 @@ var BotSchema = new Schema({
     "properties": {}
 });
 
+//Bot Methods
+//
+//BotSchema.methods.start = function(){
+
+//};
+
+
 module.exports = mongoose.model("Bot", BotSchema);
