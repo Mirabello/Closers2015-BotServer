@@ -5,7 +5,7 @@ var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/botdb");
 
 var Bot = require('./app/models/bot');
-
+var BotManager = requre('./lib/bot_libraries/botManager.js');
 
 //body-parser is a body parsing middleware
 var bodyParser = require('body-parser');
