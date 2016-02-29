@@ -11,11 +11,24 @@ var BotSchema = new Schema({
     "properties": {}
 });
 
-//Bot Methods
-//
-//BotSchema.methods.start = function(){
 
-//};
+var Botkit = require('botkit');
+var botController = Botkit.slackbot({
+    debug: false
+});
+
+//Bot Methods
+BotSchema.methods.start = function(){
+
+    bot = botController.spawn({
+        token: this.token
+    })
+
+    bot.startRTM();
+
+    //activate event listeners for bot
+    require('./bot_libraries/toneBot.js')(bot, botController);
+};
 
 
 module.exports = mongoose.model("Bot", BotSchema);

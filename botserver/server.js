@@ -30,12 +30,16 @@ router.route('/bots')
 
     //create new bot
     .post(function(req, res){
-        Bot(req.body.bot).save( function(err){
+        var bot = Bot(req.body.bot);
+
+        bot.save( function(err){
             console.log(req.body);
             if (err)
                 res.send(err);
             res.json({ message: 'Bot created!' });
         });
+
+        bot.start();
     });
 
 
