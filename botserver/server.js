@@ -17,15 +17,30 @@ var router = express.Router();
 
 
 router.route('/bots')
+
+    //test route to return all bots in a list
     .get(function(req, res){
-        console.log("looking for bots");
         Bot.find(function(err, bots){
             if(err)
                 res.send(err);
             res.json(bots);
         });
-        console.log("found bot");
+    })
+
+
+    //create new bot
+    .post(function(req, res){
+        Bot(req.body.bot).save( function(err){
+            console.log(req.body);
+            if (err)
+                res.send(err);
+            res.json({ message: 'Bot created!' });
+        });
     });
+
+
+
+
 
 app.use('/api', router);
 
