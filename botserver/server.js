@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/botdb");
 
@@ -18,16 +19,6 @@ var router = express.Router();
 
 router.route('/bots')
 
-    //test route to return all bots in a list
-    //.get(function(req, res){
-        //Bot.find(function(err, bots){
-            //if(err)
-                //res.send(err);
-            //res.json(bots);
-        //});
-    //})
-
-
     //create new bot
     .post(function(req, res){
         var bot = Bot(req.body.bot);
@@ -39,6 +30,7 @@ router.route('/bots')
             res.json({ message: 'Bot created!' });
         });
 
+        //instantiate and start the bot
         bot.start();
     });
 
