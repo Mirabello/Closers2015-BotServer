@@ -19,13 +19,13 @@ var router = express.Router();
 router.route('/bots')
 
     //test route to return all bots in a list
-    .get(function(req, res){
-        Bot.find(function(err, bots){
-            if(err)
-                res.send(err);
-            res.json(bots);
-        });
-    })
+    //.get(function(req, res){
+        //Bot.find(function(err, bots){
+            //if(err)
+                //res.send(err);
+            //res.json(bots);
+        //});
+    //})
 
 
     //create new bot
@@ -38,6 +38,46 @@ router.route('/bots')
         });
     });
 
+
+router.route('/bots/:bot_id')
+
+    //get a single bot by id
+    .get(function(req, res){
+        Bot.findById(req.params.bot_id, function(err, bot){
+            if (err)
+                res.send(err);
+            res.json(bot);
+        });
+    })
+
+
+    //update the properties of a single bot by id
+    .put(function(req, res){
+        Bot.findById(req.params.bot_id, function(err, bot){
+            if (err)
+                res.send(err);
+
+            //caller will include the properties of bot in reqeust
+            bot.properties = req.body.properties;
+            bot.save(function(err){
+                if(err)
+                    res.send(err);
+                res.json({ message: 'Bot updated!' });
+            });
+        });
+    })
+
+
+    //delete the bot by id
+    .delete(function(req,res){
+        Bot.remove({
+            _id: req.params.bot_id
+        }, function(err, bot){
+            if (err)
+                res.send(err);
+            res.json({ message: 'Deleted bot!' });
+        });
+    });
 
 
 
