@@ -16,6 +16,8 @@ b) adjust the parameters of a particular bot
 4. CD into the botserver folder
 5. do npm install
    it should look like this:
+
+
 '''
 module.exports = function (watson){
     return {
