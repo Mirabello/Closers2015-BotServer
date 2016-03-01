@@ -1,7 +1,9 @@
 var watson = require('watson-developer-cloud');
 var apis = require('../config.js')(watson);
 
-module.exports = function (bot, botController){
+
+//TODO pass in bot settings as parameter
+module.exports = function (botSettings, bot, botController){
     botController.on('ambient', function(bot, message) {
         if (message.type !== "message") return false;
 
@@ -19,28 +21,7 @@ module.exports = function (bot, botController){
 
             console.log(toneScores);
 
-
-            var responses = {
-                anger:[
-                    "Settle down! There is no reason to be angry",
-                    "Simmer down now! You'll give youself a hear attack!"
-                ],
-                disgust: [
-                    "yeah.....ewww",
-                    "oy.....now I am going to be sick"
-                ],
-                fear: [
-                    "Don't be scared! I will protect you :)",
-                    "OH NO!!!!"
-                ],
-                joy: [
-                    "It looks like you are feeling happy today. Good stuff!",
-                    "Give me some of whatever this person is smoking!"
-                ],
-                sadness: [
-                    "Don't be sad. I am here to comfort you!",
-                    "Aww cheer up motherfucker!"
-                ]
+                sadness: botSettings.sadness.threshold
             };
 
             var dominantScore = 0;
@@ -51,12 +32,13 @@ module.exports = function (bot, botController){
                     dominantScore = toneScores[tone];
                 }
             }
+;
 
-            var threshold = 0.6;
-
-            if(dominantScore > threshold){
-                var responseIndex = Math.floor(Math.random() * responses[dominantTone].length);
-                bot.reply(message, responses[dominantTone][responseIndex]);
+            var dominantThreshold = botSettings[dominantTone].threshold;
+            if(dominantScore > dominantThreshold){
+                var responses = botSettings[dominantTone].responses;
+                var responseIndex = Math.floor(Math.random() * responses.length);
+                bot.reply(message, responses[responseIndex]);
                 console.log("Dominant tone: " + dominantTone + " , Score: " + dominantScore);
             }
         });

@@ -20,6 +20,7 @@ module.exports = function(){
 
     /**
      * botWrapper: a wrapper object to give a bot its logic system and slack connectivity
+     *
      * @param {bot} botModel: unique information about bot, pulled from the database
      */
     var botWrapper = function (botModel){
@@ -36,13 +37,15 @@ module.exports = function(){
 
         /**
          * start:
+         *
          * -load up the bots logic system (event handlers) by specifying bot type
          * -start up the connection to the slack api
          */
         this.start = function(){
             //botModel 'type' property must have same name as library file
             var botType = this.botModel.type;
-            require('./' + botType + '.js')(slackBot, botController);
+            require('./' + botType + '.js')(this.botModel.properties, this.slackBot, this.botController);
+
 
             this.slackbot.startRTM();
         };
@@ -51,6 +54,7 @@ module.exports = function(){
 
     /**
      * botManager: an object that is responsible for:
+     *
      * -loading up all of the bots from the database
      * -instantiating and starting up the bots
      * -keeping a list of running bots in the botList property
@@ -79,6 +83,8 @@ module.exports = function(){
         };
     };
 
-    return botManager;
+    //instantiate the botManager and return instance
+    return new botManager();
+
 };
 
