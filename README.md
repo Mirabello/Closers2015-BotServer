@@ -38,6 +38,7 @@ module.exports = function (watson){
 
 
 6. Start the app by running
+
 ```
 node server.js
 ```
