@@ -21,8 +21,6 @@ module.exports = function (botSettings, bot, botController){
 
             console.log(toneScores);
 
-                sadness: botSettings.sadness.threshold
-            };
 
             var dominantScore = 0;
             var dominantTone;

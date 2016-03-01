@@ -11,8 +11,8 @@
 
 
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/botdb");
-var Bot = require('./app/models/bot');
+mongoose.createConnection("mongodb://localhost/botdb");
+var Bot = require('../../app/models/bot');
 var Botkit = require('botkit');
 
 
@@ -30,7 +30,7 @@ module.exports = function(){
             debug: false
         });
 
-        this.slackBot = botController.spawn({
+        this.slackBot = this.botController.spawn({
             token: this.botModel.token
         });
 
@@ -47,7 +47,7 @@ module.exports = function(){
             require('./' + botType + '.js')(this.botModel.properties, this.slackBot, this.botController);
 
 
-            this.slackbot.startRTM();
+            this.slackBot.startRTM();
         };
     }
 
@@ -60,8 +60,7 @@ module.exports = function(){
      * -keeping a list of running bots in the botList property
      */
     var botManager = function (){
-        this.botList = {
-        };
+        this.botList = {};
 
         this.init = function (){
             //loop through bots in database
@@ -69,17 +68,28 @@ module.exports = function(){
             Bot.find(function(err, bots){
                 if(err)
                     console.log(err);
-                //for each one. create an instance
-                for(var bot in bots){
-                    if(bot.active){
-                        var newBotInstance = botWrapper(bot);
-                        newBotInstance.start();
 
+                //for each one. create an instance
+                for (var i = 0; i < bots.length; i++){
+                    if(bots[i].active){
+                        var newBot = new botWrapper(bots[i]);
+
+                        newBot.start();
+
+                        //for some reason, botList is undefined unless I assign it to an empty object here
+                        this.botList = {};
                         //add bot to this.botList, with the key being the id
-                        this.botList[bot._id] = newBot;
+                        var botKey = bots[i]._id;
+                        this.botList[botKey] = newBot;
                     }
                 }
             });
+        };
+
+        //TODO need addBot method
+        //adds bot to botList and starts it
+        this.addBot = function (bot) {
+            return;
         };
     };
 
