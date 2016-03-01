@@ -37,7 +37,7 @@ module.exports = function (watson){
 ```
 
 
-6. Start the app by running
+6. Start the app by running the following code:
 
 ```
 node server.js
