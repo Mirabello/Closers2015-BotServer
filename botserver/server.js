@@ -5,7 +5,7 @@ var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/botdb");
 
 var Bot = require('./app/models/bot');
-var BotManager = requre('./lib/bot_libraries/botManager.js');
+var BotManager = require('./lib/bot_libraries/botManager.js');
 
 //body-parser is a body parsing middleware
 var bodyParser = require('body-parser');
@@ -30,8 +30,7 @@ router.route('/bots')
             res.json({ message: 'Bot created!' });
         });
 
-        //instantiate and start the bot
-        bot.start();
+        //TODO: instantiate and start the bot
     });
 
 
@@ -85,3 +84,10 @@ app.use('/api', router);
 var port = process.env.PORT || 8080;
 app.listen(port);
 console.log('botserver now running on port ' + port);
+
+
+//start the botManager
+console.log("starting the botManager");
+var botManager = BotManager();
+botManager.init();
+

@@ -2,7 +2,6 @@ var watson = require('watson-developer-cloud');
 var apis = require('../config.js')(watson);
 
 
-//TODO pass in bot settings as parameter
 module.exports = function (botSettings, bot, botController){
     botController.on('ambient', function(bot, message) {
         if (message.type !== "message") return false;
