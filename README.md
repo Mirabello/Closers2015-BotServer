@@ -17,8 +17,7 @@ b) adjust the parameters of a particular bot
 5. do npm install
    it should look like this:
 
-
-'''
+```
 module.exports = function (watson){
     return {
         personality_insights: watson.personality_insights({
@@ -35,9 +34,14 @@ module.exports = function (watson){
         })
     }
 }
-'''
+```
+
+
 6. Start the app by running
-''' node server.js'''
+```
+node server.js
+```
+
 
 
 
