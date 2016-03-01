@@ -1,0 +1,11 @@
+{
+  "name": "botserver",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "~1.01",
+    "botkit": "0.0.7",
+    "express": "~4.0.0",
+    "mongoose": "~3.6.13",
+    "watson-developer-cloud": "1.2.4"
+  }
+}
