@@ -72,7 +72,8 @@ router.route('/bots/:bot_id')
                 res.json({ message: 'Bot updated!' });
             });
 
-            //TODO: update bot in botManager
+            //ubpdate botModel in the botManager
+            botManager.updateBot(bot);
         });
     })
 

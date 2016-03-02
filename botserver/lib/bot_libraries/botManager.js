@@ -48,6 +48,11 @@ var botWrapper = function (botModel){
 
         this.slackBot.startRTM();
     };
+
+    //stop: disconnects bot from Slack API
+    this.stop = function(){
+        this.slackBot.closeRTM();
+    };
 }
 
 
@@ -80,13 +85,21 @@ var botManager = function (){
     };
 
     //addBot(): adds bot to botList and starts it
-    this.addBot = function (bot) {
+    this.addBot = function (bot){
         var newBot = new botWrapper(bot);
         newBot.start();
 
         var botKey = bot._id;
         self.botList[botKey] = newBot;
     };
+
+    //updateBot(): updates the bot settings
+    this.updateBot = function (bot){
+        var botKey = bot._id;
+        self.botList[botKey].botModel = bot;
+        //TODO: check if this actually updates the settings
+        //  might have to restart the bot....
+    }
 };
 
 module.exports = function(){
