@@ -12,7 +12,7 @@ b) adjust the parameters of a particular bot
 ### Installation:
 1. Install NodeJS
 2. Install MongoDB
-3. CD into the botserver folder run 'npm install'
+3. CD into the botserver folder and run 'npm install'
 4. Sign up for an IBM Bluemix account and [get credentials for the Tone Analyzer API](https://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/tone-analyzer/tutorial.shtml#credentials)
 5. Add your IBM Watson credentials to 'botserver/lib/config.js' The file should be in the following format:
 
