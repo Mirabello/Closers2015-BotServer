@@ -50,7 +50,6 @@ var botWrapper = function (botModel){
 
     //stop: disconnects bot from Slack API
     this.stop = function(){
-        console.log("inside botWrapper.stop()");
         this.slackBot.closeRTM();
     };
 }
@@ -88,7 +87,6 @@ var botManager = function (){
             newBot.start();
 
             var botKey = bot._id;
-            console.log("addbot botKey: " + botKey);
             self.botList[botKey] = newBot;
         }
     };

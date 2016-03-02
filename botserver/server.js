@@ -90,7 +90,6 @@ router.route('/bots/:bot_id')
                 res.send(err);
             //remove bot from botManager
             botManager.deleteBot(bot_id);
-            console.log("does bot_id exist? " + bot_id);
 
             res.json({ message: 'Deleted bot!' });
         });
