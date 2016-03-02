@@ -43,8 +43,7 @@ var botWrapper = function (botModel){
     this.start = function(){
         //botModel 'type' property must have same name as library file
         var botType = this.botModel.type;
-        require('./' + botType + '.js')(this.botModel.properties, this.slackBot, this.botController);
-
+        var eventHandlers = require('./' + botType + '.js')(this.botModel.properties, this.slackBot, this.botController);
 
         this.slackBot.startRTM();
     };
@@ -95,10 +94,10 @@ var botManager = function (){
 
     //updateBot(): updates the bot settings
     this.updateBot = function (bot){
+        //restart the bot with new settings
         var botKey = bot._id;
-        self.botList[botKey].botModel = bot;
-        //TODO: check if this actually updates the settings
-        //  might have to restart the bot....
+        self.botList[botKey].stop()
+        self.addBot(bot);
     }
 };
 
