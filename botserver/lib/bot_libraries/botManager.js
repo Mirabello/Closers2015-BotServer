@@ -76,20 +76,20 @@ var botManager = function (){
 
             //for each one. create an instance
             for (var i = 0; i < bots.length; i++){
-                if(bots[i].active){
-                    self.addBot(bots[i]);
-                }
+                self.addBot(bots[i]);
             }
         });
     };
 
     //addBot(): adds bot to botList and starts it
     this.addBot = function (bot){
-        var newBot = new botWrapper(bot);
-        newBot.start();
+        if(bot.active){
+            var newBot = new botWrapper(bot);
+            newBot.start();
 
-        var botKey = bot._id;
-        self.botList[botKey] = newBot;
+            var botKey = bot._id;
+            self.botList[botKey] = newBot;
+        }
     };
 
     //updateBot(): updates the bot settings
