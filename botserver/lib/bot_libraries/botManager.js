@@ -50,6 +50,7 @@ var botWrapper = function (botModel){
 
     //stop: disconnects bot from Slack API
     this.stop = function(){
+        console.log("inside botWrapper.stop()");
         this.slackBot.closeRTM();
     };
 }
@@ -65,7 +66,6 @@ var botWrapper = function (botModel){
 var botManager = function (){
     var self = this;
     this.botList = {};
-    console.log("constructor botList: " + self.botList);
 
     this.init = function (){
         //loop through bots in database
@@ -88,6 +88,7 @@ var botManager = function (){
             newBot.start();
 
             var botKey = bot._id;
+            console.log("addbot botKey: " + botKey);
             self.botList[botKey] = newBot;
         }
     };
@@ -98,7 +99,15 @@ var botManager = function (){
         var botKey = bot._id;
         self.botList[botKey].stop()
         self.addBot(bot);
-    }
+    };
+
+    //deleteBot(): remove bot from botManager
+    this.deleteBot = function (botKey){
+        if (botKey in self.botList){
+            self.botList[botKey].stop();
+            delete self.botList[botKey];
+        }
+    };
 };
 
 module.exports = function(){

@@ -35,7 +35,6 @@ router.route('/bots')
         var bot = Bot(req.body.bot);
 
         bot.save( function(err){
-            console.log(req.body);
             if (err)
                 res.send(err);
             res.json({
@@ -75,7 +74,7 @@ router.route('/bots/:bot_id')
                 res.json({ message: 'Bot updated!' });
             });
 
-            //ubpdate botModel in the botManager
+            //update botModel in the botManager
             botManager.updateBot(bot);
         });
     })
@@ -83,11 +82,16 @@ router.route('/bots/:bot_id')
 
     //delete the bot by id
     .delete(function(req,res){
+        var bot_id = req.params.bot_id;
         Bot.remove({
-            _id: req.params.bot_id
+            _id: bot_id
         }, function(err, bot){
             if (err)
                 res.send(err);
+            //remove bot from botManager
+            botManager.deleteBot(bot_id);
+            console.log("does bot_id exist? " + bot_id);
+
             res.json({ message: 'Deleted bot!' });
         });
     });
@@ -101,11 +105,8 @@ app.use('/api', router);
 //start the server
 var port = process.env.PORT || 8080;
 app.listen(port);
-console.log('botserver now running on port ' + port);
 
 
 //start the botManager
-console.log("starting the botManager");
 var botManager = BotManager();
-console.log("botList from server.js: " + botManager.botList)
 botManager.init();
