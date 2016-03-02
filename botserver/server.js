@@ -1,3 +1,14 @@
+/**
+ * @server.js
+ *
+ * This is the main module in the botserver node app: the app is started by running
+ * 'node server.js'.
+ * This module does two things:
+ *  -sets up CRUD routes for the bot API
+ *  -instantiates a botManager object and runs its init method (see ./lib/bot_libraries/botManager.js)
+ */
+
+
 var express = require('express');
 var app = express();
 
@@ -30,7 +41,8 @@ router.route('/bots')
             res.json({ message: 'Bot created!' });
         });
 
-        //TODO: instantiate and start the bot
+        //instantiate and start the bot
+        botManager.addBot(bot);
     });
 
 
@@ -59,6 +71,8 @@ router.route('/bots/:bot_id')
                     res.send(err);
                 res.json({ message: 'Bot updated!' });
             });
+
+            //TODO: update bot in botManager
         });
     })
 
@@ -89,5 +103,5 @@ console.log('botserver now running on port ' + port);
 //start the botManager
 console.log("starting the botManager");
 var botManager = BotManager();
+console.log("botList from server.js: " + botManager.botList)
 botManager.init();
-
