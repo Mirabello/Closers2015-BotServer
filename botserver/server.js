@@ -38,7 +38,10 @@ router.route('/bots')
             console.log(req.body);
             if (err)
                 res.send(err);
-            res.json({ message: 'Bot created!' });
+            res.json({
+                message: 'Bot created!',
+                bot_id: bot._id
+            });
         });
 
         //instantiate and start the bot
