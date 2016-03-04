@@ -8,7 +8,6 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
 	user = models.OneToOneField(User, related_name="profile")
 	created = models.DateTimeField(auto_now_add=True)
-	identiy_token = models.CharField(max_length=60)
 	slack_token = models.CharField(max_length=60)
 
 

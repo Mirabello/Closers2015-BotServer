@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import mongoengine 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -49,6 +50,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.twitter',
+    # 'django_mongoengine',
+    # 'django_mongoengine.mongo_auth',
+    # 'django_mongoengine.mongo_admin.sites',
+    # 'django_mongoengine.mongo_admin',
 
 ]
 
@@ -84,28 +89,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'project.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bots',                  
+        'USER': 'Jr',
+        'PASSWORD': 'jared',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',   
+    },
+
+   'bots' : {
+      'ENGINE' : '',
+      # 'NAME' : 'my_database',
+   }
 }
-
-
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-    #         'NAME': 'mydb',                      # Or path to database file if using sqlite3.
-    #         # The following settings are not used with sqlite3:
-    #         'USER': 'myuser',
-    #         'PASSWORD': 'password',
-    #         'HOST': 'localhost',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
-    #         'PORT': '',                      # Set to empty string for default.
-    #     }
-    # }
 
 
 
@@ -157,6 +156,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
+    'django.db.backends.mongoengine'
+
 
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
