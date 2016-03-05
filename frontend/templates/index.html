@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+ {% block style %}
+       <style>
+    #home{
+background-image: url('/static/img/bot-man.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    background-attachment: fixed;
+}
+
+
+        </style>
+         {% endblock style %}
+ {% block content %}
+   
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="home-navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Portfolio<b>X</b></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+         <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#questions">Questions</a></li>
+        <li><a href="#contact">Contact</a></li>
+        </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div  id="home" class="jumbotron" style="width: 100vw; height: 100vh; margin-bottom: 0px;">
+      <div class="container text-center">
+        <h1  >Bots</h1>
+        <p>Bots are taking over are you in r out </p>
+  <p><a class="btn btn-primary btn-lg" href="/users/create_user" role="button">Register &raquo;</a></p>
+      </div>
+    </div>
+
+
+<main class="container-fluid">
+      <div id="about"  class="row marketing-row" style="width: 100vw; height: 100vh; background-color: #f3f5f7; overflow: scroll;">
+        <div class="col-xs-4 text-center">
+          <i class="fa fa-slack fa-5x"></i>
+          <h2 class="text-center">Simple To Use</h2>
+          <p class="text-center">No matter what type of investor you are, keeping an eye on your investments is always a priority. Thankfully, this website devoted to this task are continually offering more powerful portfolio management tools to help you do just that.</p>
+        </div>
+
+        <div class="col-xs-4 text-center">
+          <i class="fa fa-users fa-5x"></i>
+          <h2 >Efficent Tracking</h2>
+          <p >Our reports offered are more robust than those found in others software programs.Our online portfolio tracker can handle Cash, Stocks, Mutual Funds and ETFs. Plus we are constantly adding new features and functionality.</p>
+       </div>
+        <div class="col-xs-4 text-center">
+          <i class="fa fa-commenting fa-5x"></i>
+          <h2 class="text-center">Secure Data</h2>
+          <p class="text-center"> PortfolioX online portfolio management service solves the problem of tracking separate accounts by allowing users to combine and analyze all assets in one location, making it easy to monitor all holdings as one complete portfolio.</p>
+        </div>
+      </div>
+
+
+      <div id="demo" class="row demo-row" style="width: 100vw; height: 100vmin; clear: both; ">
+      <h2 class="text-center"> Demo </h2>
+      <hr>
+      <div class="col-xs-12 text-center">
+        <h3>Omg</h3>
+        
+      </div>
+      <hr>
+      </div>
+
+
+    <div id="questions" class="row question-row" style="width: 100vw; height: 100vh; background-color: #f3f5f7; clear: both; overflow: scroll;">
+      <h2 class="text-center"> Frequently Asked Questions ?</h2>
+      <hr>
+      <div></div>
+      <div class="col-xs-6" style="">
+        <h4>What is Slack?</h4>
+          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia quisquam ratione suscipit perferendis dolorem esse in quas perspiciatis, aperiam recusandae itaque ab consectetur animi commodi consequuntur deserunt, expedita adipisci at! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab blanditiis, ducimus mollitia voluptates, voluptate accusamus. Alias veniam, expedita distinctio est, repellat unde vel enim labore doloribus beatae esse amet ad.</p>      
+      </div>
+
+       <div class="col-xs-6">
+        <h4>Who is this built for?</h4>
+          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia quisquam ratione suscipit perferendis dolorem esse in quas perspiciatis, aperiam recusandae itaque ab consectetur animi commodi consequuntur deserunt, expedita adipisci at! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab blanditiis, ducimus mollitia voluptates, voluptate accusamus. Alias veniam, expedita distinctio est, repellat unde vel enim labore doloribus beatae esse amet ad.</p>      
+      </div>
+
+       <div class="col-xs-6">
+        <h4>How do I install this?</h4>
+          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia quisquam ratione suscipit perferendis dolorem esse in quas perspiciatis, aperiam recusandae itaque ab consectetur animi commodi consequuntur deserunt, expedita adipisci at! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab blanditiis, ducimus mollitia voluptates, voluptate accusamus. Alias veniam, expedita distinctio est, repellat unde vel enim labore doloribus beatae esse amet ad.</p>      
+      </div>
+
+       <div class="col-xs-6">
+        <h4>Can I use this to find my potential spouse?</h4>
+          <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, optio ex dolorum a consequuntur nemo modi. Sint ipsum consectetur non sequi eligendi saepe in, autem dolor illum, odio at perferendis!</p>      
+      </div>
+       <div class="text-center col-xs-12">
+          <a class="btn btn-primary btn-lg" href="/users/create_user" role="button"> SignUp</a>
+        </div>
+    </div>
+      
+
+      <div id="contact" class="row contacts-row" style="width: 100vw; height: 100vh; clear: both;">
+      <h2 class="text-center"> Contact Us </h2>
+      <hr>
+      <div class="col-xs-12 text-center">
+        <div class="col-xs-6 col-sm-offset-3">
+          <h1 class="text-center">{{ title }}</h1>
+          {% if confirm_message %}
+            <p class="text-center">{{ confirm_message }}</p>
+          {% endif %}
+          {% if form %}
+            <form method="POST" action=""> {% csrf_token %}
+          {{ form|crispy }}
+            <input type="submit" value="Submit" class="btn btn-default" />
+            </form> 
+          {% endif %}
+        </div>
+</div>
+        
+      </div>
+
+    </main>
+      <hr>
+      <footer >
+        <p class="text-center">&copy; 2016 Caveatemptors-Garbanzo, Inc.</p>
+      </footer>
+ <!--    </div> 
+ -->
+ {% endblock %}
