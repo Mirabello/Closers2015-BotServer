@@ -18,7 +18,7 @@ class IndexView(View):
 
 	def post(self, request):
 		url="https://pacific-brushlands-11047.herokuapp.com/api/bots"
-		omg =  {
+		api_json =  {
 		"properties": {
 		  "anger": {
 			"threshold": request.POST.get('anger'),
@@ -47,14 +47,21 @@ class IndexView(View):
 		"service": "slack",
 		"active": True
 	  	}	
-		data = {'bot': omg}
+		data = {'bot': api_json}
 		data_json = json.dumps(data)
 		print(data_json)
-
-		bot_id = requests.post(url, data=data_json)
+		bot_id = requests.post(url, data=data_json, timeout=30)
 		print(bot_id)
 		context = {
 			"form": self.form()
 		}
-# print(request.POST)
 		return  HttpResponse('')
+
+class ProfileView(View):
+	url = "https://pacific-brushlands-11047.herokuapp.com/api/bots"
+	template = 'bots/index.html'
+	form = ToneForm
+
+	def get(self, request):
+		context = {}
+		return render(request, self.template, context)

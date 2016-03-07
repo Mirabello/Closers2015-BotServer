@@ -5,7 +5,7 @@
  {% block style %}
        <style>
     #home{
-background-image: url('/static/img/bot-man.jpg');
+    background-image: url('/static/img/bot-man.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,40 +13,27 @@ background-image: url('/static/img/bot-man.jpg');
     background-attachment: fixed;
 }
 
+/*.slime{
+  background-color: red;
 
+}*/
         </style>
          {% endblock style %}
- {% block content %}
+
+{% block content %}
    
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" id="home-navbar">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Portfolio<b>X</b></a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-         <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#demo">Demo</a></li>
-        <li><a href="#questions">Questions</a></li>
-        <li><a href="#contact">Contact</a></li>
-        </ul>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
+
+{% include 'navbar.html' %}
+
+
+
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div  id="home" class="jumbotron" style="width: 100vw; height: 100vh; margin-bottom: 0px;">
       <div class="container text-center">
-        <h1  >Bots</h1>
+        <h1 id="omg" >Bots</h1>
         <p>Bots are taking over are you in r out </p>
-  <p><a class="btn btn-primary btn-lg" href="/users/create_user" role="button">Register &raquo;</a></p>
+  <p><a class="btn btn-primary btn-lg" href="#about" role="button">Register &raquo;</a></p>
       </div>
     </div>
 
@@ -134,9 +121,7 @@ background-image: url('/static/img/bot-man.jpg');
 
     </main>
       <hr>
-      <footer >
-        <p class="text-center">&copy; 2016 Caveatemptors-Garbanzo, Inc.</p>
-      </footer>
+     {% include 'footer.html' %}
  <!--    </div> 
  -->
  {% endblock %}
