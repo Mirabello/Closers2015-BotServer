@@ -1,8 +1,8 @@
 from django.conf.urls import url
-from .views import ProfileIndex 
+from .views import HomePage
 
 urlpatterns = [
-	url(r'^$',  ProfileIndex.as_view(), name='index'),
+	url(r'^$',  HomePage.as_view(), name='index'),
 	# url(r'^create$',  PostCreateView.as_view(), name='create'),
 	# url(r'^read/(?P<slug>[\w-]+)$',  PostDetailView.as_view(), name='detail'),
 	# url(r'^update/(?P<slug>[\w-]+)$',  PostUpdateView.as_view(), name='update'),
