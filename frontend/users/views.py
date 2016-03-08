@@ -1,14 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import View
-from django.conf import settings
-from django.core.mail import send_mail
-from contacts.forms import ContactForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Profile
 
-class HomePage(View):
-	form = ContactForm
+class ProfileIndex(LoginRequiredMixin, View):
+	template="users/index.html"
 	def get(self, request):
-		context ={
-			"form": self.form(),
-
-		}
-		return render(request, 'index.html', context)
+		profile = get_object_or_404(Profile, user=request.user)
+		context = {"profile": profile}
+		return render(request, self.template, context)

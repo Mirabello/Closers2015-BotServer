@@ -1,8 +1,21 @@
-<h1>index.html</h1>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
 
 
 
-<form method='POST' action=''> {% csrf_token %}
-	{{ form.as_p }}
+ {% block content %}
+ <main>
+ <div class="row">
+ 	<div class="col-xs-6 col-xs-offset-3 text-center">
+ 			<form method='POST' action=''> {% csrf_token %}
+	{{ form|crispy }}
 	<input type='submit' value='Submit' class='btn btn-default' />
 </form>	
+ 	</div>
+ </div>
+ 
+
+ </main>
+
+ {% endblock content %}
