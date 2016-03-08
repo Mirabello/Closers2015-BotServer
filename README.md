@@ -16,7 +16,13 @@ b) adjust the parameters of a particular bot
 4. Sign up for an IBM Bluemix account and [get credentials for the Tone Analyzer API](https://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/tone-analyzer/tutorial.shtml#credentials)
 5. Add your IBM Watson credentials to 'botserver/lib/config.js' The file should be in the following format:
 6. Start the app by running the following code:
+
+
+
 7. go to \frontend and run
+
+
+
 
 ```
 module.exports = function (watson){
