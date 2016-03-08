@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'users',
     'bots',
     'contacts',
-    
     'crispy_forms',
     'allauth',
     'allauth.account',
@@ -94,11 +93,11 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'bots',                  
+#         'NAME': 'bots',
 #         'USER': 'Jr',
 #         'PASSWORD': 'jared',
 #         'HOST': '127.0.0.1',
-#         'PORT': '5432',   
+#         'PORT': '5432',
 #     },
 # }
 

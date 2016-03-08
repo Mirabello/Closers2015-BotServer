@@ -25,6 +25,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //it will only be parsing JSON
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 var router = express.Router();
 
 
@@ -32,6 +38,7 @@ router.route('/bots')
 
     //create new bot
     .post(function(req, res){
+
         var bot = Bot(req.body.bot);
 
         bot.save( function(err){
