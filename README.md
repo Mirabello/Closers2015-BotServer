@@ -41,6 +41,13 @@ module.exports = function (watson){
 ```
 node server.js
 ```
+7. go to \frontend and run
+```
+pip3 install -r requirements.txt
+```
+ 
+
+
 
 
 
