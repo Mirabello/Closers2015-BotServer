@@ -15,56 +15,34 @@ b) adjust the parameters of a particular bot
 3. CD into the botserver folder and run 'npm install'
 4. Sign up for an IBM Bluemix account and [get credentials for the Tone Analyzer API](https://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/tone-analyzer/tutorial.shtml#credentials)
 5. Add your IBM Watson credentials to 'botserver/lib/config.js' The file should be in the following format:
-```
-module.exports = function (watson){
-    return {
-        personality_insights: watson.personality_insights({
-          username: '***YOUR USERNAME****',
-          password: '****YOUR PASSWORD****',
-          version: 'v2'
-        }),
+    ```
+        module.exports = function (watson){
+        return {
+            personality_insights: watson.personality_insights({
+              username: '***YOUR USERNAME****',
+              password: '****YOUR PASSWORD****',
+              version: 'v2'
+            }),
 
-        tone_analyzer: watson.tone_analyzer({
-          username: '***YOUR USERNAME****',
-          password: '****YOUR PASSWORD****',
-          version: 'v3-beta',
-          version_date: '2016-02-11'
-        })
+            tone_analyzer: watson.tone_analyzer({
+              username: '***YOUR USERNAME****',
+              password: '****YOUR PASSWORD****',
+              version: 'v3-beta',
+              version_date: '2016-02-11'
+            })
+        }
     }
-}
-```
-
+    ```
 
 6. Start the app by running the following code:
-
-
-
+    ```
+    node server.js
+    ```
 7. go to \frontend and run
-
-
-
-
-
-
-
-6. 
-
-```
-node server.js
-```
-7. 
-```
-pip3 install -r requirements.txt
-```
+    ```
+    pip3 install -r requirements.txt
+    ```
  
-
-
-
-
-
-
-
-
 ###Use Case:
 Provide multiple interactions with users in the context of working inside the Slack app, including:
 
