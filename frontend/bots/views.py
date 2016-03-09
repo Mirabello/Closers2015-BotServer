@@ -1,67 +1,32 @@
-import json
-import requests 
-from django.http import JsonResponse, HttpResponse
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import View
-from .forms import ToneForm
 
 # Create your views here.
 
+
 class IndexView(View):
-	form = ToneForm
 	template = 'bots/index.html'
 	def get(self, request):
-		context = {
-			"form": self.form()
-		}
-		return render(request, self.template, context)
+		return render(request, self.template)
 
-	def post(self, request):
-		url="https://pacific-brushlands-11047.herokuapp.com/api/bots"
-		api_json =  {
-		"properties": {
-		  "anger": {
-			"threshold": request.POST.get('anger'),
-			"responses": [request.POST.get('anger_responses')]
-		  },
-		  "joy": {
-			"threshold": request.POST.get('joy'),
-			"responses": [request.POST.get('joy_responses')]
-		  },
-		  "sadness": {
-			"threshold": request.POST.get('sadness'),
-			"responses": [request.POST.get('sadness_responses')]
-		  },
-		  "disgust": {
-			"threshold": request.POST.get('disgust'),
-			"responses": [request.POST.get('disgust_responses')]
-		  },
-		  "fear": {
-			"threshold": request.POST.get('fear'),
-			"responses": [request.POST.get('fear_responses')]
-		  }
-		},
-		"token": 'xoxb-22386467188-hVTzv9TXTIUnjsNJr2poZ82q',
-		"teamID": "",
-		"type": "tonebot",
-		"service": "slack",
-		"active": True
-	  	}	
-		data = {'bot': api_json}
-		data_json = json.dumps(data)
-		print(data_json)
-		bot_id = requests.post(url, data=data_json, timeout=30)
-		print(bot_id)
-		context = {
-			"form": self.form()
-		}
-		return  HttpResponse('')
-
-class ProfileView(View):
-	url = "https://pacific-brushlands-11047.herokuapp.com/api/bots"
-	template = 'bots/index.html'
-	form = ToneForm
-
+class CreateView(View):
+	template = 'bots/createtonebot.html'
 	def get(self, request):
-		context = {}
+		return render(request, self.template)
+
+
+class CreateTonebotView(View):
+	def get(self, request, botid):
+	        	if (request.user.is_authenticated()):
+		            pass
+		            #get user profile
+		            #create new bot object with bot id and profile id as members
+		            #save bot
+
+class UpdateTonebotView(View):
+	template = 'bots/updatetonebot.html'
+	def get(self, request, botid):
+		context = {"botid": botid};
 		return render(request, self.template, context)
+

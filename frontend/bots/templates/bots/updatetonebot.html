@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+
+ {% block content %}
+ <main>
+ <div class="row">
+ 	<div class="col-xs-2 col-xs-offset-5 text-center">
+        <div class="botForm"></div>
+ 	</div>
+ </div>
+ <br />
+ <br />
+ </main>
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+ <script>
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        contentType: "application/json",
+        url: "https://pacific-brushlands-11047.herokuapp.com/api/bots/{{botid}}",
+        success: function(response){
+            generateForm(response);
+        },
+        error: function(jqxhr,textStatus,errorThrown) {
+            console.log(textStatus + "; " + errorThrown);
+        }
+    });
+
+    var generateForm = function(bot) {
+        var angerThreshold = bot.properties.anger.threshold * 10;
+        var fearThreshold = bot.properties.fear.threshold * 10;
+        var joyThreshold = bot.properties.joy.threshold * 10;
+        var disgustThreshold = bot.properties.disgust.threshold * 10;
+        var sadnessThreshold = bot.properties.sadness.threshold * 10;
+
+        var template = "<form method='POST' action=''>{% csrf_token %}{% verbatim %}{{#properties}}<h3>Anger</h3><input type='range' class='anger-threshold' min='0' max='10' value='" + angerThreshold + "'><div class='anger'><div class='anger-responses'>{{#anger.responses}}<input type='text' value='{{.}}'>{{/anger.responses}}</div><button class='add-response btn btn-default'>Add Response</button></div><hr><h3>joy</h3><input type='range' class='joy-threshold' min='0' max='10' value='" + joyThreshold + "'><div class='joy'><div class='joy-responses'>{{#joy.responses}}<input type='text' value='{{.}}'>{{/joy.responses}}</div><button class='add-response btn btn-default'>Add Response</button></div><hr><h3>fear</h3><input type='range' class='fear-threshold' min='0' max='10' value='" + fearThreshold + "'><div class='fear'><div class='fear-responses'>{{#fear.responses}}<input type='text' value='{{.}}'>{{/fear.responses}}</div><button class='add-response btn btn-default'>Add Response</button></div><hr><h3>sadness</h3><input type='range' class='sadness-threshold' min='0' max='10' value='" + sadnessThreshold + "'><div class='sadness'><div class='sadness-responses'>{{#sadness.responses}}<input type='text' value='{{.}}'>{{/sadness.responses}}</div><button class='add-response btn btn-default'>Add Response</button></div><hr><h3>disgust</h3><input type='range' class='disgust-threshold' min='0' max='10' value='" + disgustThreshold + "'><div class='disgust'><div class='disgust-responses'>{{#disgust.responses}}<input type='text' value='{{.}}'>{{/disgust.responses}}</div><button class='add-response btn btn-default'>Add Response</button></div></hr>{{/properties}}<hr><input type='submit' value='Update Bot!' class='add-bot-button btn btn-default' /></form>{% endverbatim %}";
+        var html = Mustache.to_html(template, bot);
+        $(".botForm").html(html);
+
+
+        var counter = 0;
+        $(".add-response").on("click", function(event){
+            event.preventDefault();
+
+
+            if($(this).parent().find("div input:last").val()){
+                counter++;
+                var tone = $(this).parent().attr("class");
+                $(this).parent().find("div").append("<input id='" + tone + counter + "' type='text'>");
+            }
+        });
+
+        $("form").submit(function(event){
+            event.preventDefault();
+            var angerResponses = [];
+            $(".anger-responses input").each(function() {
+                angerResponses[$(this).attr("name")] = $(this).val();
+            });
+            angerResponses = Object.keys(angerResponses).map(function (key) {return angerResponses[key]})
+
+            var joyResponses = [];
+            $(".joy-responses input").each(function() {
+                joyResponses[$(this).attr("name")] = $(this).val();
+            });
+            joyResponses = Object.keys(joyResponses).map(function (key) {return joyResponses[key]})
+
+            var fearResponses = [];
+            $(".fear-responses input").each(function() {
+                fearResponses[$(this).attr("name")] = $(this).val();
+            });
+            fearResponses = Object.keys(fearResponses).map(function (key) {return fearResponses[key]})
+
+            var disgustResponses = [];
+            $(".disgust-responses input").each(function() {
+                disgustResponses[$(this).attr("name")] = $(this).val();
+            });
+            disgustResponses = Object.keys(disgustResponses).map(function (key) {return disgustResponses[key]})
+
+            var sadnessResponses = [];
+            $(".sadness-responses input").each(function() {
+                sadnessResponses[$(this).attr("name")] = $(this).val();
+            });
+            sadnessResponses = Object.keys(sadnessResponses).map(function (key) {return sadnessResponses[key]})
+
+
+
+            var angerThreshold = $(".anger-threshold").val() / 10.0;
+            var disgustThreshold = $(".disgust-threshold").val() / 10.0;
+            var fearThreshold = $(".fear-threshold").val() / 10.0;
+            var sadnessThreshold = $(".sadness-threshold").val() / 10.0;
+            var joyThreshold = $(".joy-threshold").val() / 10.0;
+
+
+            var data = {
+                properties: {
+                  anger: {
+                    threshold: angerThreshold,
+                    responses: angerResponses
+                  },
+                  joy: {
+                    threshold: joyThreshold,
+                    responses: joyResponses
+                  },
+                  sadness: {
+                    threshold: sadnessThreshold,
+                    responses: sadnessResponses
+                  },
+                  disgust: {
+                    threshold: disgustThreshold,
+                    responses: disgustResponses
+                  },
+                  fear: {
+                    threshold: fearThreshold,
+                    responses: fearResponses
+                  }
+                }
+              };
+
+            console.log(data);
+            var jsonData = JSON.stringify(data);
+
+
+            $.ajax({
+                method: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                data: jsonData,
+                url: "https://pacific-brushlands-11047.herokuapp.com/api/bots/{{botid}}",
+                success: function(response){
+                    createBotCallback(response);
+                },
+                error: function(jqxhr,textStatus,errorThrown) {
+                    console.log(textStatus + "; " + errorThrown);
+                }
+            });
+        });
+
+        function createBotCallback(response){
+           // window.location.href = "update/{{botid}}";
+            console.log(response);
+            //redirect to create-bot url with botID as parameter
+            //the creat-bot route will add new entry in the sqlite db
+            //whch will redirect back to list of bots
+        }
+    }
+
+ </script>
+
+ {% endblock content %}
