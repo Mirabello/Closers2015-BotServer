@@ -1,10 +1,11 @@
-{% extends "base.html" %}
+{% extends 'index.html' %}
+
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
 
 
- {% block content %}
+ {% block bot_forms %}
 
  <main>
 
@@ -23,10 +24,10 @@
 	 		{% else %}
 	 			<h3><a href="{% url 'bots:updatetonebot' botid=bot.bot_id %}">{{bot.bot_id}}</a></h3>
 	 		{% endif %}
-		{% endfor %}	
+		{% endfor %}
  	</div>
  </div>
 
  </main>
 
- {% endblock content %}
+ {% endblock bot_forms %}
