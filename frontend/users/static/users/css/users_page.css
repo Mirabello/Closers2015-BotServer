@@ -1,0 +1,18 @@
+#profile-jumbo{
+	background-color: white;
+}
+
+#profile-container{
+	background-color: #f3f5f7;
+
+}
+
+.nav-sidebar > li{
+	background-color: white; 
+	color: white; 
+	box-sizing: border-box;
+}
+
+.well{
+	background-color: white;
+}

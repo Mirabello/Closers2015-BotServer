@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" id="home-navbar">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -7,19 +7,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Portfolio<b>X</b></a>
+        <a class="navbar-brand" href="#home">Closers</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-         <li><a href="#home">Home</a></li>
+        <ul class="nav navbar-nav">
         <li><a href="#about">About</a></li>
         <li><a href="#demo">Demo</a></li>
         <li><a href="#questions">Questions</a></li>
         <li><a href="#contact">Contact</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Login</a></li>
-        <li><a href="#">Register</a></li>
+        {% if user.is_anonymous %}
+        <li><a href="{% url 'account_login' %}">Login</a></li>
+        <li><a href="{% url 'account_signup' %}" >Register</a></li>
+        {% else%}
+        <li><a href="{% url 'profile:index' %}">Profile</a></li>
+        <li><a href="{% url 'account_logout' %}">Logout</a></li>
+        {% endif %}
           </ul>
         </div><!--/.navbar-collapse -->
       </div>

@@ -9,7 +9,7 @@ class HomePage(View):
 	def get(self, request):
 		print(request.user)
 		context ={
-			"form": self.form(),
+			"contact_form": self.form(),
 
 		}
 		return render(request, 'index.html', context)

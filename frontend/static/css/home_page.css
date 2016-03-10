@@ -1,0 +1,102 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+
+
+#home{
+    background-image: url('/static/img/bot-man.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    background-attachment: fixed;
+    width: 100vw;
+    height: 100vh;
+    margin-bottom: 0px;
+    border-bottom: 6px solid #3EB890;
+}
+
+/*.slime{
+    background-image: url('/static/img/bot-man.jpg');
+}*/
+
+#demo, #contact{
+	width: 100vw;
+	height: 100vh; 
+	clear: both;
+    border-bottom: 6px solid #3EB890; 
+}
+
+#questions, #about{
+	width: 100vw;
+	height: 100vh;
+	background-color: #f3f5f7;
+	clear: both;
+	overflow: scroll;
+    border-bottom: 6px solid #3EB890; 
+}
+
+.fa-5x{
+    font-size: 10em;
+}
+
+.fa-commenting{
+    color: #443642;
+    font-size: 10em;
+}
+
+.fa-users{
+    color: #3EB890;
+}
+
+.fa-slack{
+    color: #E01765;
+}
+
+.about-info{
+    margin-top: 12em;
+}
+
+#about-title{
+    padding-top: 25px;
+}
+
+.signup-button{
+    background-color:#E01765;
+    margin-top: 5em;
+}
+
+.signup-button:hover{
+    background-color: #443642;
+}
+
+#img-demo{
+    margin: 0 auto;
+}
+
+#faq{
+    margin-top: 5em;
+}
+
+.faq-text{
+    font-size: 16px;
+}
+
+.faq-row-2{
+    margin-top: 5em;
+}
+
+
+.jumbo-header{
+    padding-top: 5em;
+}
+
+.navbar.past-main {
+    background-color:#fff;
+    color:#444;
+}
+
+footer{
+    clear: both;
+}

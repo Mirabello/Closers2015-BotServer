@@ -33,22 +33,8 @@ class CultureForm(forms.Form):
 class FaqForm(forms.Form):
 	pass
 
-class JoyForm(forms.Form):
-	joy = forms.ChoiceField(choices=THRESHOLD_CHOICES)
-	joy_responses = forms.CharField(widget=forms.Textarea)
+class SingleForm(forms.Form):
+	threshold = forms.ChoiceField(choices=THRESHOLD_CHOICES)
+	responses = forms.CharField(widget=forms.Textarea)
 
-class SadForm(forms.Form):
-	sad = forms.ChoiceField(choices=THRESHOLD_CHOICES)
-	sad_responses = forms.CharField(widget=forms.Textarea)
 
-class AngryForm(forms.Form):
-	angry = forms.ChoiceField(choices=THRESHOLD_CHOICES)
-	angry_responses = forms.CharField(widget=forms.Textarea)
-
-class DisgustForm(forms.Form):
-	disgust = forms.ChoiceField(choices=THRESHOLD_CHOICES)
-	disgust_responses = forms.CharField(widget=forms.Textarea)
-
-class FearForm(forms.Form):
-	fear = forms.ChoiceField(choices=THRESHOLD_CHOICES)
-	fear_responses = forms.CharField(widget=forms.Textarea)

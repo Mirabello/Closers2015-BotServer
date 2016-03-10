@@ -2,126 +2,126 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
- {% block style %}
-       <style>
-    #home{
-    background-image: url('/static/img/bot-man.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    background-attachment: fixed;
-}
-
-/*.slime{
-  background-color: red;
-
-}*/
-        </style>
-         {% endblock style %}
 
 {% block content %}
    
-
-
 {% include 'navbar.html' %}
 
 
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div  id="home" class="jumbotron" style="width: 100vw; height: 100vh; margin-bottom: 0px;">
-      <div class="container text-center">
-        <h1 id="omg" >Bots</h1>
-        <p>Bots are taking over are you in r out </p>
-  <p><a class="btn btn-primary btn-lg" href="#about" role="button">Register &raquo;</a></p>
-      </div>
-    </div>
+<div id="home" class="jumbotron">
+  <div class="container text-center jumbo-header animated fadeInDownBig">
+    <h1 class="lead">The Closers</h1>
+      <p>Bring Bots From Ivory Tower to Main Street </p>
+    <!-- <p><a class="btn btn-primary btn-lg" href="#about" role="button">Register &raquo;</a></p> -->
+  </div>
+</div>
 
 
 <main class="container-fluid">
-      <div id="about"  class="row marketing-row" style="width: 100vw; height: 100vh; background-color: #f3f5f7; overflow: scroll;">
+  <div id="about"  class="row marketing-row">
+    <h1 class="text-center" id="about-title">
+      Easy To Use!  Get Started Today
+    </h1>
+    <hr>
+    <div class="about-info">
         <div class="col-xs-4 text-center">
-          <i class="fa fa-slack fa-5x"></i>
-          <h2 class="text-center">Simple To Use</h2>
-          <p class="text-center">No matter what type of investor you are, keeping an eye on your investments is always a priority. Thankfully, this website devoted to this task are continually offering more powerful portfolio management tools to help you do just that.</p>
+        <i class="fa fa-slack fa-5x"></i>
+        <h2 class="text-center">Simple To Use</h2>
+        <p class="text-center faq-text">
+           In under 10mins you'll be setup and ready to go.
+           Theres no coding involed all you need to know is how to read and write.
+        </p>
         </div>
-
         <div class="col-xs-4 text-center">
-          <i class="fa fa-users fa-5x"></i>
-          <h2 >Efficent Tracking</h2>
-          <p >Our reports offered are more robust than those found in others software programs.Our online portfolio tracker can handle Cash, Stocks, Mutual Funds and ETFs. Plus we are constantly adding new features and functionality.</p>
-       </div>
+        <i class="fa fa-users fa-5x"></i>
+        <h2 >Efficent Tracking</h2>
+        <p class="text-center faq-text">
+          
+        </p>
+        </div>
         <div class="col-xs-4 text-center">
           <i class="fa fa-commenting fa-5x"></i>
           <h2 class="text-center">Secure Data</h2>
-          <p class="text-center"> PortfolioX online portfolio management service solves the problem of tracking separate accounts by allowing users to combine and analyze all assets in one location, making it easy to monitor all holdings as one complete portfolio.</p>
+          <p class="text-center faq-text"> 
+            We do do not store any of your chat data meaning we are not selling your data to the FBI or anyone else. Any information you provide is only avaliable to you.
+          </p>
         </div>
       </div>
-
-
-      <div id="demo" class="row demo-row" style="width: 100vw; height: 100vmin; clear: both; ">
-      <h2 class="text-center"> Demo </h2>
-      <hr>
-      <div class="col-xs-12 text-center">
-        <h3>Omg</h3>
-        
-      </div>
-      <hr>
-      </div>
-
-
-    <div id="questions" class="row question-row" style="width: 100vw; height: 100vh; background-color: #f3f5f7; clear: both; overflow: scroll;">
-      <h2 class="text-center"> Frequently Asked Questions ?</h2>
-      <hr>
-      <div></div>
-      <div class="col-xs-6" style="">
-        <h4>What is Slack?</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia quisquam ratione suscipit perferendis dolorem esse in quas perspiciatis, aperiam recusandae itaque ab consectetur animi commodi consequuntur deserunt, expedita adipisci at! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab blanditiis, ducimus mollitia voluptates, voluptate accusamus. Alias veniam, expedita distinctio est, repellat unde vel enim labore doloribus beatae esse amet ad.</p>      
-      </div>
-
-       <div class="col-xs-6">
-        <h4>Who is this built for?</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia quisquam ratione suscipit perferendis dolorem esse in quas perspiciatis, aperiam recusandae itaque ab consectetur animi commodi consequuntur deserunt, expedita adipisci at! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab blanditiis, ducimus mollitia voluptates, voluptate accusamus. Alias veniam, expedita distinctio est, repellat unde vel enim labore doloribus beatae esse amet ad.</p>      
-      </div>
-
-       <div class="col-xs-6">
-        <h4>How do I install this?</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia quisquam ratione suscipit perferendis dolorem esse in quas perspiciatis, aperiam recusandae itaque ab consectetur animi commodi consequuntur deserunt, expedita adipisci at! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab blanditiis, ducimus mollitia voluptates, voluptate accusamus. Alias veniam, expedita distinctio est, repellat unde vel enim labore doloribus beatae esse amet ad.</p>      
-      </div>
-
-       <div class="col-xs-6">
-        <h4>Can I use this to find my potential spouse?</h4>
-          <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, optio ex dolorum a consequuntur nemo modi. Sint ipsum consectetur non sequi eligendi saepe in, autem dolor illum, odio at perferendis!</p>      
-      </div>
-       <div class="text-center col-xs-12">
-          <a class="btn btn-primary btn-lg" href="/users/create_user" role="button"> SignUp</a>
-        </div>
     </div>
-      
+    
 
-      <div id="contact" class="row contacts-row" style="width: 100vw; height: 100vh; clear: both;">
-      <h2 class="text-center"> Contact Us </h2>
-      <hr>
-      <div class="col-xs-12 text-center">
-        <div class="col-xs-6 col-sm-offset-3">
-          <h1 class="text-center">{{ title }}</h1>
-          {% if confirm_message %}
-            <p class="text-center">{{ confirm_message }}</p>
-          {% endif %}
-          {% if form %}
+
+  <div id="demo" class="row demo-row">
+    <h1 class="text-center"> Quick Demo </h1>
+    <hr>
+      <div class="text-center">
+        <img src="{% static '/static/img/demo.gif' %}" id="img-demo" class="img-responsive demo text-center">
+      
+    </div>
+    <hr>
+  </div>
+
+
+  <div id="questions" class="row question-row">
+    <h1 class="text-center"> Frequently Asked Questions ?</h1>
+    <hr>
+  <div id="faq">
+  <div class="row faq-row-1">
+      <div class="col-xs-6 col-lg-6">
+      <h2 class="text-center lead">What is Slack?</h2>
+      <p class="text-muted text-center faq-text">
+        Slack is an instant messaging and collaboration system on steroids. Slack’s channels help you focus by enabling you to separate messages, discussions and notifications. Slack provides traditional instant messaging functionality for you to do so. <a href="https://slack.com/">Learn More about Slack.</a> 
+      </p>      
+    </div>
+
+    <div class="col-xs-6 col-lg-6">
+      <h2 class="text-center lead">Who is this built for?</h2>
+      <p class="text-muted text-center faq-text">
+        This Service is for businesses that would like to help enhance their human resource department. It is not meant to take anyone job  This Service is for businesses that would like to hel boost their human resource department.
+      </p>      
+    </div>
+  </div>
+  
+ <div class="row faq-row-2">
+   <div class="col-xs-6 col-lg-6">
+      <h2 class="text-center lead">How do I install this?</h2>
+      <p class="text-muted text-center faq-text">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia quisquam ratione suscipit perferendis dolorem esse in quas perspiciatis, aperiam recusandae itaque ab consectetur animi commodi consequuntur deserunt, expedita adipisci at!
+    </p>      
+    </div>
+
+    <div class="col-xs-6 col-lg-6">
+      <h2 class="text-center lead">Can I use this to find my potential spouse?</h2>
+      <p class="text-muted text-center faq-text"> 
+          Our bots are very friendly and will talk back to you but they do play hard to get in regards to building a intimate relationship.  
+      </p>      
+    </div>
+ </div>
+   
+  </div>
+
+    <div class="text-center col-xs-12 ">
+      <a class="btn btn-primary btn-lg signup-button" href="" role="button">Sign Up</a>
+    </div>
+  </div>
+
+
+  <div id="contact" class="row contacts-row">
+    <h1 class="text-center"> Contact Us </h1>
+    <hr>
+    <div class="col-xs-12 text-center">
+      <div class="col-xs-6  col-xs-offset-3">
+        <h1 class="text-center">{{ title }}</h1>
+          {% if contact_form %}
             <form method="POST" action=""> {% csrf_token %}
-          {{ form|crispy }}
+            {{ contact_form|crispy }}
             <input type="submit" value="Submit" class="btn btn-default" />
             </form> 
           {% endif %}
-        </div>
-</div>
-        
       </div>
-
-    </main>
+    </div>
+  </div>
+</main>
       <hr>
-     {% include 'footer.html' %}
- <!--    </div> 
- -->
+{% include 'footer.html' %}
  {% endblock %}

@@ -1,0 +1,14 @@
+{% load crispy_forms_tags %} 
+
+<div class="col-sm-9  col-md-10  main well">
+          <h1 class="page-header text-center">
+            Edit {{ option|capfirst }} Settings
+          </h1> 
+            {% if form %}
+              <form method="POST" action=""> {% csrf_token %}
+              {{ form|crispy }}
+              <input type="submit" value="Submit" class="btn btn-default" />
+              </form> 
+            {% endif %}
+          </div>
+        </div>
